@@ -9,7 +9,15 @@
   --gray-800: #202024;
   --gray-900: #121214;
 
-  --blue-500: #4F9FFA;
+  --red-500: #f75a68;
+
+  --blue-300: #68b2f7;
+  --blue-500: #3782fa;
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--blue-500);
 }
 
 * {

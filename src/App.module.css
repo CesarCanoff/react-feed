@@ -4,7 +4,25 @@
   padding: 0 1rem;
 
   display: grid;
-  grid-template-columns: 1fr 256px;
+  grid-template-columns: [main] 1fr [sidebar] 256px;
+  grid-template-areas: "main sidebar";
   gap: 2rem;
   align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "main";
+  }
+
+  .sideBar {
+    order: -1;
+  }
 }

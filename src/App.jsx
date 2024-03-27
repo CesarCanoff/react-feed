@@ -2,24 +2,34 @@ import "./global.css";
 
 import STYLES from "./App.module.css";
 
-import { Header } from "./components/Header/Header";
-import { Post } from "./components/Post/Post";
-import { Sidebar } from "./components/Sidebar/Sidebar";
+import { Header } from "./components/Header";
+import { Post } from "./components/Post";
+import { Sidebar } from "./components/Sidebar";
+
+import { posts } from "./data/database";
 
 export function App() {
   return (
     <>
       <Header />
-      
+
       <div className={STYLES.wrapper}>
         <main>
-          <Post
-            author="Anna Crisp"
-            content="I'm learning how to use CSS modules."
-          />
+          {posts.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
 
-        <Sidebar />
+        <div className={STYLES.sideBar}>
+          <Sidebar />
+        </div>
       </div>
     </>
   );
