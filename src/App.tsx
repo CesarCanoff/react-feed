@@ -2,11 +2,11 @@ import "./global.css";
 
 import STYLES from "./App.module.css";
 
-import { Header } from "./components/Header";
-import { Post } from "./components/Post";
-import { Sidebar } from "./components/Sidebar";
+import { Header } from "./components/Header.tsx";
+import { Post } from "./components/Post.tsx";
+import { Sidebar } from "./components/Sidebar.tsx";
 
-import { posts } from "./data/database";
+import { posts } from "./data/database.ts";
 
 export function App() {
   return (

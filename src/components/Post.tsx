@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
@@ -8,14 +8,30 @@ import { Comment } from "./Comment";
 
 import STYLES from "./Post.module.css";
 
-export function Post({ author, content, publishedAt }) {
-  // const publishedDateFormatted = new Intl.DateTimeFormat("pt-BR", {
-  //   day: "2-digit",
-  //   month: "long",
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  // }).format(new Date(publishedAt));
-  const [comments, setComments] = useState([]);
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface ContentProps {
+  type: 'paragraph' | 'link';
+  content: string
+}
+
+interface PostProps {
+  author: Author;
+  content: ContentProps[];
+  publishedAt: Date;
+}
+
+interface CommentsProps {
+  text: string;
+  timestamp: Date;
+}
+
+export function Post({ author, content, publishedAt }: PostProps) {
+  const [comments, setComments] = useState<CommentsProps[]>([]);
   const [newCommentText, setNewCommentText] = useState("");
 
   const isNewCommentEmpty = newCommentText.trim() === "";
@@ -33,22 +49,30 @@ export function Post({ author, content, publishedAt }) {
     addSuffix: true,
   });
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault();
-    setComments([...comments, newCommentText]);
+
+    const currentDate = new Date();
+
+    const newComment = {
+      text: newCommentText,
+      timestamp: currentDate,
+    };
+
+    setComments([...comments, newComment]);
     setNewCommentText("");
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
   }
 
-  function deleteComment(commentToDelete) {
-    setComments(comments.filter((comment) => comment !== commentToDelete));
+  function deleteComment(commentToDelete: string) {
+    setComments(comments.filter((comment) => comment.text !== commentToDelete));
   }
 
-  function handleNewCommentInvalid() {
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity("Comment cannot be empty.");
   }
 
@@ -56,7 +80,7 @@ export function Post({ author, content, publishedAt }) {
     <article className={STYLES.post}>
       <header>
         <div className={STYLES.author}>
-          <Avatar avatarUrl={author.avatarUrl} />
+          <Avatar src={author.avatarUrl} />
 
           <div className={STYLES.authorInfo}>
             <strong>{author.name}</strong>
@@ -113,8 +137,9 @@ export function Post({ author, content, publishedAt }) {
         {comments.map((comment) => {
           return (
             <Comment
-              key={comment}
-              content={comment}
+              key={comment.text}
+              content={comment.text}
+              timestamp={comment.timestamp}
               onDeleteComment={deleteComment}
             />
           );
