@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+<img src="public/Desktop.png" />
+ <br />
+  <br />
+<p>
+  Welcome to <b>React Feed</b>, the platform where you can discover, share, and interact with interesting content. Explore a dynamic feed, like, comment, and share your favorite posts, and engage in meaningful discussions. Join us and be part of a vibrant community!
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h3>📚 Technologies</h3>
 
-Currently, two official plugins are available:
+  ![React](https://img.shields.io/badge/react-0d1117.svg?style=for-the-badge&logo=react&logoColor=3E89CC)
+  ![NPM](https://img.shields.io/badge/NPM-0d1117.svg?style=for-the-badge&logo=npm&logoColor=3E89CC)
+  ![Typescript](https://img.shields.io/badge/typescript-0d1117.svg?style=for-the-badge&logo=typescript&logoColor=3E89CC)
+  ![Javascript](https://img.shields.io/badge/javascript-0d1117.svg?style=for-the-badge&logo=javascript&logoColor=3E89CC)
+  ![HTML5](https://img.shields.io/badge/html5-0d1117.svg?style=for-the-badge&logo=html5&logoColor=3E89CC)
+  ![CSS3](https://img.shields.io/badge/css3_Modules-0d1117.svg?style=for-the-badge&logo=css3&logoColor=3E89CC)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  1. Clone the repository:
+  Open your terminal (Command Prompt for Windows) and execute the following command to clone the React Feed repository:
+  ```bash
+  git clone git@github.com:CesarCanoff/react-feed.git
+  ```
 
-## Expanding the ESLint configuration
+  2. Navigate to the app directory:
+  Change to the Do It directory that you just cloned:
+  ```bash
+  git clone git@github.com:CesarCanoff/react-feed.git
+  ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+  3. Install dependencies:
+  Use npm to install all the app's dependencies. This may take some time depending on the project's size:
+  ```bash
+  npm install
+  ```
+  4. Run web app:
+  After the dependencies are successfully installed, you can start the app. Run the following command:
+  ```bash
+  npm run dev
+  ```
